@@ -1,0 +1,24 @@
+// Recebe um nome composto e deixa a letra inicial apenas os nomes do meio
+// Ex: William H. Gates (William Henry Gates)
+fun main(){
+    print("Digite seu nome completo: ")
+    val name: String = readLine()!!.toString().toLowerCase() //recebe uma String e torna todos os Chars em minusculo
+
+    val listName = name.split(" ") as ArrayList<String> // Transforma val name em um ArrayList<String>
+
+    for(items in listName.indices){ //Para cada indices dentro de ListName...
+
+        // Se o item dentro da lista for o primeiro ou o ultimo...
+        if(listName[items] == listName.first() || listName[items] == listName.last()){
+            print(listName[items].capitalize() + " ") //mostre esse item capitalizado com um espaçamento
+
+        }else{ // Se não for o primeiro ou o ultimo item...
+            print(listName[items].capitalize()[0] + ". ") //mostre apenas o primeiro Char desse item capitalizado
+
+        }
+    }
+}
+// Output:
+//Digite seu nome completo: William Henry Gates
+//William H. Gates
+//Process finished with exit code 0
