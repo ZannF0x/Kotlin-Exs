@@ -1,5 +1,7 @@
 // Recebe um nome composto e deixa a letra inicial apenas os nomes do meio
 // Ex: William H. Gates (William Henry Gates)
+
+val filterNames = arrayListOf<String>("de", "da", "do", "das", "dos" ) //Lista de palavras para serem filtradas
 fun main(){
     print("Digite seu nome completo: ")
     val name: String = readLine()!!.toString().toLowerCase() //recebe uma String e torna todos os Chars em minusculo
@@ -7,18 +9,23 @@ fun main(){
     val listName = name.split(" ") as ArrayList<String> // Transforma val name em um ArrayList<String>
 
     for(items in listName.indices){ //Para cada indices dentro de ListName...
+	 
+	if(listName[items] !in filterNames) { //Se algum item em listName também não conter em filterNames...
+		   // Só serão processados Items que não contem em filterNames
+		   // Se o item dentro da listName for o primeiro ou o ultimo...
+            if(listName[items] == listName.first() || listName[items] == listName.last()){
+                print(listName[items].capitalize() + " ") //mostre esse item capitalizado com um espaçamento
 
-        // Se o item dentro da lista for o primeiro ou o ultimo...
-        if(listName[items] == listName.first() || listName[items] == listName.last()){
-            print(listName[items].capitalize() + " ") //mostre esse item capitalizado com um espaçamento
-
-        }else{ // Se não for o primeiro ou o ultimo item...
-            print(listName[items].capitalize()[0] + ". ") //mostre apenas o primeiro Char desse item capitalizado
-
-        }
-    }
+            }else{ // Se não for o primeiro ou o ultimo item...
+                print(listName[items].capitalize()[0] + ". ") //mostre apenas o primeiro Char desse item capitalizado
+            }
+	}
+    }    
 }
 // Output:
 //Digite seu nome completo: William Henry Gates
 //William H. Gates
 //Process finished with exit code 0
+
+
+      

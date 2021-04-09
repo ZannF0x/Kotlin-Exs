@@ -1,3 +1,5 @@
+val filterNames = arrayListOf<String>("de", "da", "do", "das", "dos" )
+
 fun main(){
     print("Digite seu nome completo: ")
     val name: String = readLine()!!.toString().toLowerCase()
@@ -6,15 +8,18 @@ fun main(){
 
     for(items in listName.indices){
 
-        if(listName[items] == listName.first() || listName[items] == listName.last()){
-            print(listName[items].capitalize() + " ")
+        if(listName[items] !in filterNames) {
 
-        }else{
-            print(listName[items].capitalize()[0] + ". ")
+            if (listName[items] == listName.first() || listName[items] == listName.last()) {
+                print(listName[items].capitalize() + " ")
 
+            }else{
+                print(listName[items].capitalize()[0] + ". ")
+
+            }
         }
+
     }
 }
-
 
 
